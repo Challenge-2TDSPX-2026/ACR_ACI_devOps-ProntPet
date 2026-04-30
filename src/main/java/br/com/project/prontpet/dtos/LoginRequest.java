@@ -1,0 +1,13 @@
+package br.com.project.prontpet.dtos;
+
+import jakarta.validation.constraints.NotBlank;
+
+public record LoginRequest (
+
+        @NotBlank(message = "emnail is required")
+        String email,
+
+        @NotBlank(message = "password is required")
+        String password
+){
+}
