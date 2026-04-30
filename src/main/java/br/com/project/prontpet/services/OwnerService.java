@@ -32,7 +32,7 @@ public class OwnerService {
     public Owner login(LoginRequest loginRequest){
         Owner owner = ownerRepository.findByEmail(loginRequest.email())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email or passwor is invalids"));
-        if (!loginRequest.password().matches(owner.getPassword())){throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email or password is invalids")}
+        if (!loginRequest.password().matches(owner.getPassword())){throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email or password is invalids");}
         return owner;
 
     }
