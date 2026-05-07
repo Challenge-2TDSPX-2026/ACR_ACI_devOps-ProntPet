@@ -10,7 +10,7 @@ public record OwnerResponse(
         String email,
         String phone
 ) {
-    public OwnerResponse fromEntity(Owner o){
+    public static OwnerResponse fromEntity(Owner o){
         return new OwnerResponse(
                 o.getId(),
                 o.getName(),

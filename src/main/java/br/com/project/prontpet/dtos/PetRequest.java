@@ -1,9 +1,9 @@
 package br.com.project.prontpet.dtos;
 
+import br.com.project.prontpet.enums.Sex;
+import br.com.project.prontpet.models.Owner;
 import br.com.project.prontpet.models.Pet;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 
 public record PetRequest(
 
@@ -14,12 +14,30 @@ public record PetRequest(
         String species,
 
         @NotBlank(message = "race is required")
-        String race,
+        String breed,
 
+        @NotBlank
         @Min(value = 0, message = "the age must be greater or equals 0")
         Integer age,
 
-        Long owner_id
-        
+        @NotBlank
+        @DecimalMin(value = "0.5", message = "the weight must be at least '0.5g'")
+        Double weight,
+
+        Sex sex,
+
+        @NotBlank
+        Owner owner
 ) {
+        public Pet toEntity(){
+                return Pet.builder()
+                        .name(name)
+                        .species(species)
+                        .breed(breed)
+                        .age(age)
+                        .weight(weight)
+                        .sex(sex)
+                        .owner(owner)
+                        .build();
+        }
 }

@@ -1,6 +1,7 @@
 package br.com.project.prontpet.models;
 
 
+import br.com.project.prontpet.enums.Sex;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,10 +16,13 @@ public class Pet {
     private Long id;
     private String name;
     private String species;
-    private String race;
+    private String breed;
     private Integer age;
+    private Double weight;
+    private Sex sex;
+
+
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
     private Owner owner;
 }
