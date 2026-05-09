@@ -1,14 +1,11 @@
 package br.com.project.prontpet.models;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,19 +13,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "TB_CLINIC")
-public class Clinic {
+@Table(name = "TB_APPOiNTMENT")
+public class Appointment {
+
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String CNPJ;
-    private String address;
-    private String phone;
-    private LocalDateTime openingHours;
-    private LocalDateTime closingHours;
+    private String specialty;
+    private String symptoms;
+    private String dignosis;
+    private String observations;
 
+    @ManyToOne
+    private Clinic clinic;
 
-
+    @ManyToOne
+    private Pet pet;
 }
