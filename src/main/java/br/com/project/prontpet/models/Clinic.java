@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -26,8 +27,8 @@ public class Clinic {
     private String CNPJ;
     private String address;
     private String phone;
-    private LocalDateTime openingHours;
-    private LocalDateTime closingHours;
+    private LocalTime openingHours;
+    private LocalTime closingHours;
 
 
 
