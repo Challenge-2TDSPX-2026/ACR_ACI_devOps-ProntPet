@@ -21,8 +21,6 @@ public class Pet {
     private Double weight;
     private Sex sex;
 
-
-
     @ManyToOne
     private Owner owner;
 }

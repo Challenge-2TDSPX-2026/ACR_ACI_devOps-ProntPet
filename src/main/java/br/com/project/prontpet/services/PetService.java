@@ -21,8 +21,8 @@ public class PetService {
         this.petRepository = petRepository;
     }
 
-    public List<Pet> getPets(){
-        return petRepository.findAll();
+    public Page<Pet> getPets(Pageable pageable){
+        return petRepository.findAll(pageable);
     }
 
     public Optional<Pet> getPetById(Long id){

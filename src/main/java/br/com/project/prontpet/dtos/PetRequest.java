@@ -16,17 +16,18 @@ public record PetRequest(
         @NotBlank(message = "race is required")
         String breed,
 
-        @NotBlank
+        @NotNull
         @Min(value = 0, message = "the age must be greater or equals 0")
         Integer age,
 
-        @NotBlank
+        @NotNull
         @DecimalMin(value = "0.5", message = "the weight must be at least '0.5g'")
         Double weight,
 
+        @NotNull(message = "sex is required")
         Sex sex,
 
-        @NotBlank
+        @NotNull
         Owner owner
 ) {
         public Pet toEntity(){

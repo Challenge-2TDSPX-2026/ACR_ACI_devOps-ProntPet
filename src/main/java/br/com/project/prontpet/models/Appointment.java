@@ -20,7 +20,7 @@ public class Appointment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String specialty;
+    private String speciality;
     private String symptoms;
     private String dignosis;
     private String observations;

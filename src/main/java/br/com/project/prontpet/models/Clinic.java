@@ -30,6 +30,4 @@ public class Clinic {
     private LocalTime openingHours;
     private LocalTime closingHours;
 
-
-
 }

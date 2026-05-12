@@ -32,7 +32,17 @@ public class ClinicController {
         return ResponseEntity.status(HttpStatus.CREATED).body(ClinicResponse.fromEntity(clinic));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ClinicResponse> updateClinic(@PathVariable Long id, @Valid @RequestBody ClinicRequest clinicRequest ) {
+        Clinic clinic = clinicService.updateClinic(id, clinicRequest.toEntity());
+        return ResponseEntity.ok(ClinicResponse.fromEntity(clinic));
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClinic(@PathVariable Long id) {
+        clinicService.deleteClinic(id);
+        return ResponseEntity.noContent().build();
+    }
 
 
 }

@@ -7,6 +7,9 @@ import br.com.project.prontpet.models.Pet;
 import br.com.project.prontpet.services.PetService;
 import jakarta.validation.Valid;
 import org.apache.catalina.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +28,17 @@ public class PetController {
     }
 
     @GetMapping
-    public List<Pet> getPets(){
-        return petService.getPets();
+    public ResponseEntity<Page<PetResponse>> getPets(@PageableDefault(page = 0, size = 10) Pageable pageable){
+        Page<PetResponse> pets = petService.getPets(pageable).map(PetResponse::fromEntity);
+        return ResponseEntity.ok(pets);
     }
+
+
+    @GetMapping(params = "species")
+    public ResponseEntity<Page<PetResponse>> getPetsBySpecies(Pageable pageable, @RequestParam String species){
+        return
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<PetResponse> getPetById(@PathVariable Long id){

@@ -37,4 +37,9 @@ public class AppointmentService {
         return newAppointment;
     }
 
+    public void deleteAppointment(Long id) {
+        var optionalAppointment = getAppointmentById(id);
+        if (optionalAppointment.isEmpty())throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Appointment Not Found");
+        appointmentRepository.deleteById(id);
+    }
 }
