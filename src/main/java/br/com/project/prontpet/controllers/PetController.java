@@ -3,6 +3,7 @@ package br.com.project.prontpet.controllers;
 
 import br.com.project.prontpet.dtos.PetRequest;
 import br.com.project.prontpet.dtos.PetResponse;
+import br.com.project.prontpet.models.Owner;
 import br.com.project.prontpet.models.Pet;
 import br.com.project.prontpet.services.PetService;
 import jakarta.validation.Valid;
@@ -36,7 +37,26 @@ public class PetController {
 
     @GetMapping(params = "species")
     public ResponseEntity<Page<PetResponse>> getPetsBySpecies(Pageable pageable, @RequestParam String species){
-        return
+        Page<PetResponse> pets = petService.getBySpecies(species, pageable).map(PetResponse::fromEntity);
+        return ResponseEntity.ok(pets);
+    }
+
+    @GetMapping(params = "breeds")
+    public ResponseEntity<Page<PetResponse>> getPetsByBreeds(Pageable pageable, @RequestParam String breed){
+        Page<PetResponse> pets = petService.getByBreed(breed, pageable).map(PetResponse::fromEntity);
+        return ResponseEntity.ok(pets);
+    }
+
+    @GetMapping(params = "owners")
+    public ResponseEntity<Page<PetResponse>> getPetsByOwners(Pageable pageable, @RequestParam Owner owner){
+        Page<PetResponse> pets = petService.getByOwner(owner, pageable).map(PetResponse::fromEntity);
+        return ResponseEntity.ok(pets);
+    }
+
+    @GetMapping(params = {"ages", "age2"})
+    public ResponseEntity<Page<PetResponse>> getPetsByOwners(Pageable pageable, @RequestParam Integer age1, @RequestParam Integer age2){
+        Page<PetResponse> pets = petService.getByAgeBetween(age1, age2, pageable).map(PetResponse::fromEntity);
+        return ResponseEntity.ok(pets);
     }
 
 

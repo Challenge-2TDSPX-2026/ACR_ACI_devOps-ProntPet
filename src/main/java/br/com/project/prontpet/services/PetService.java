@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,6 +28,22 @@ public class PetService {
         return petRepository.findById(id);
     }
 
+    //Filtro por Raça
+    public Page<Pet> getByBreed(String breed, Pageable pageable){
+        return petRepository.findByBreedContainingIgnoreCase(breed, pageable);
+    }
+
+    //Filtro por idade
+    public Page<Pet> getByAgeBetween(Integer age1, Integer age2, Pageable pageable){
+        return  petRepository.findByAgeBetween(age1, age2,pageable);
+    }
+
+    //Filtro por Species
+    public Page<Pet> getBySpecies(String species, Pageable pageable){
+        return petRepository.findBySpeciesContainingIgnoreCase(species, pageable);
+    }
+
+    //Filtro por dono
     public Page<Pet> getByOwner(Owner owner, Pageable pageable){
         return petRepository.findByOwnerContainingIgnoreCase(owner, pageable);
     }
