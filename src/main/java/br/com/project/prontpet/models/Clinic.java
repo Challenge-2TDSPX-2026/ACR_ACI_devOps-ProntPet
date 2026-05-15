@@ -24,7 +24,7 @@ public class Clinic {
     private Long id;
 
     private String name;
-    private String CNPJ;
+    private String cnpj;
     private String address;
     private String phone;
     private LocalTime openingHours;
