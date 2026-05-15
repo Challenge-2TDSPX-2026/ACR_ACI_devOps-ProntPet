@@ -5,6 +5,8 @@ import br.com.project.prontpet.models.Clinic;
 import br.com.project.prontpet.models.Pet;
 import jakarta.persistence.ManyToOne;
 
+import java.time.LocalDateTime;
+
 public record AppointmentResponse(
 
         Long id,
@@ -14,7 +16,9 @@ public record AppointmentResponse(
         String dignosis,
         String observations,
         Clinic clinic,
-        Pet pet
+        Pet pet,
+        LocalDateTime appointmentDate,
+        Double updatedWeight
 ) {
     public static AppointmentResponse fromEntity(Appointment a) {
         return new AppointmentResponse(
@@ -24,7 +28,9 @@ public record AppointmentResponse(
                 a.getDignosis(),
                 a.getObservations(),
                 a.getClinic(),
-                a.getPet()
+                a.getPet(),
+                a.getAppointmentDate(),
+                a.getUpdatedWeight()
         );
     }
 }

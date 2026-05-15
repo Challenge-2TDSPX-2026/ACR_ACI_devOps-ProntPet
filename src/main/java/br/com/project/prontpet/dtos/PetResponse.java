@@ -4,13 +4,15 @@ import br.com.project.prontpet.enums.Sex;
 import br.com.project.prontpet.models.Owner;
 import br.com.project.prontpet.models.Pet;
 
+import java.time.LocalDate;
+
 public record PetResponse(
 
         Long id,
         String name,
         String species,
         String race,
-        Integer age,
+        LocalDate birthDate,
         Double weight,
         Sex sex,
         Owner owner
@@ -21,7 +23,7 @@ public record PetResponse(
                 p.getName(),
                 p.getSpecies(),
                 p.getBreed(),
-                p.getAge(),
+                p.getBirthDate(),
                 p.getWeight(),
                 p.getSex(),
                 p.getOwner()

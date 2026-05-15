@@ -4,7 +4,12 @@ import br.com.project.prontpet.models.Appointment;
 import br.com.project.prontpet.models.Clinic;
 import br.com.project.prontpet.models.Pet;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public record AppointmentRequest (
 
@@ -24,7 +29,14 @@ public record AppointmentRequest (
         Clinic clinic,
 
         @NotBlank(message = "pet is required")
-        Pet pet
+        Pet pet,
+
+        @NotNull(message = "appointmentDate is required")
+        @FutureOrPresent(message = "appointmentDate might not be in the past")
+        LocalDateTime appointmentDate,
+
+        @NotNull(message =  "updatedWeight is required")
+        Double updatedWeight
 ){
     public Appointment toEntity(){
         return Appointment.builder()
@@ -34,6 +46,8 @@ public record AppointmentRequest (
                 .observations(observations)
                 .clinic(clinic)
                 .pet(pet)
+                .appointmentDate(appointmentDate)
+                .updatedWeight(updatedWeight)
                 .build();
     }
 }

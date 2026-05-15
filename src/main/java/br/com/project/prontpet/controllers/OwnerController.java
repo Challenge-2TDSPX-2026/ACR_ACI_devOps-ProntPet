@@ -6,6 +6,7 @@ import br.com.project.prontpet.dtos.OwnerRequest;
 import br.com.project.prontpet.dtos.OwnerResponse;
 import br.com.project.prontpet.models.Owner;
 import br.com.project.prontpet.services.OwnerService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,39 +23,68 @@ public class OwnerController {
     }
 
     @GetMapping
-    public List<Owner> getOwner(){
+    @Operation(
+            tags = "Owner",
+            summary = "Listar todos os donos",
+            description = "Retorna uma lista com todos os donos de pets cadastrados no sistema."
+    )
+    public List<Owner> getOwner() {
         return ownerService.getOwners();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OwnerResponse> getOwnerById(@PathVariable Long id){
+    @Operation(
+            tags = "Owner",
+            summary = "Buscar dono por ID",
+            description = "Retorna os dados de um dono específico pelo seu ID. Retorna 404 caso não encontrado."
+    )
+    public ResponseEntity<OwnerResponse> getOwnerById(@PathVariable Long id) {
         return ownerService.getOwnerById(id)
                 .map((o) -> ResponseEntity.ok(OwnerResponse.fromEntity(o)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> loginOwner(@Valid @RequestBody LoginRequest loginRequest){
+    @Operation(
+            tags = "Owner",
+            summary = "Login do dono",
+            description = "Recebe as credenciais do dono via body e retorna o token de autenticação em caso de sucesso."
+    )
+    public ResponseEntity<LoginResponse> loginOwner(@Valid @RequestBody LoginRequest loginRequest) {
         LoginResponse logined = ownerService.login(loginRequest);
         return ResponseEntity.ok(logined);
     }
 
     @PostMapping
-    public ResponseEntity<OwnerResponse> addOwner(@Valid @RequestBody OwnerRequest ownerRequest){
+    @Operation(
+            tags = "Owner",
+            summary = "Cadastrar novo dono",
+            description = "Recebe os dados do dono via body, persiste no banco e retorna a entidade criada."
+    )
+    public ResponseEntity<OwnerResponse> addOwner(@Valid @RequestBody OwnerRequest ownerRequest) {
         Owner owner = ownerService.addOwner(ownerRequest.toEntity());
         return ResponseEntity.ok(OwnerResponse.fromEntity(owner));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OwnerResponse> updateOwner(@PathVariable Long id, @Valid @RequestBody OwnerRequest ownerRequest){
+    @Operation(
+            tags = "Owner",
+            summary = "Atualizar dono",
+            description = "Recebe o ID do dono e os novos dados via body, atualiza no banco e retorna a entidade atualizada."
+    )
+    public ResponseEntity<OwnerResponse> updateOwner(@PathVariable Long id, @Valid @RequestBody OwnerRequest ownerRequest) {
         Owner owner = ownerService.updateOwner(id, ownerRequest.toEntity());
         return ResponseEntity.ok(OwnerResponse.fromEntity(owner));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOwner(@PathVariable Long id){
+    @Operation(
+            tags = "Owner",
+            summary = "Deletar dono",
+            description = "Remove o dono com o ID informado do banco de dados. Retorna 204 sem conteúdo."
+    )
+    public ResponseEntity<Void> deleteOwner(@PathVariable Long id) {
         ownerService.deleteOwner(id);
         return ResponseEntity.noContent().build();
-
     }
 }

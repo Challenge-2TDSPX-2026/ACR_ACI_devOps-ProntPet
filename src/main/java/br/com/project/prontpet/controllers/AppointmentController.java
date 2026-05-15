@@ -5,6 +5,7 @@ import br.com.project.prontpet.dtos.AppointmentResponse;
 import br.com.project.prontpet.dtos.ClinicResponse;
 import br.com.project.prontpet.models.Appointment;
 import br.com.project.prontpet.services.AppointmentService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,25 +24,45 @@ public class AppointmentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Appointment>> getAllAppointments(){
+    @Operation(
+            tags = "Appointment",
+            summary = "Listar todas as consultas",
+            description = "Retorna uma lista com todas as consultas cadastradas no sistema."
+    )
+    public ResponseEntity<List<Appointment>> getAllAppointments() {
         return ResponseEntity.ok(appointmentService.getAllAppointments());
     }
 
     @PostMapping
-    public ResponseEntity<AppointmentResponse> addAppointment(@Valid @RequestBody AppointmentRequest appointmentRequest){
+    @Operation(
+            tags = "Appointment",
+            summary = "Cadastrar nova consulta",
+            description = "Recebe os dados da consulta via body, persiste no banco e retorna a entidade criada com status 201."
+    )
+    public ResponseEntity<AppointmentResponse> addAppointment(@Valid @RequestBody AppointmentRequest appointmentRequest) {
         Appointment appointment = appointmentService.addAppointment(appointmentRequest.toEntity());
         return ResponseEntity.status(HttpStatus.CREATED).body(AppointmentResponse.fromEntity(appointment));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AppointmentResponse> updateAppointment(@PathVariable Long id, @Valid @RequestBody AppointmentRequest appointmentRequest){
+    @Operation(
+            tags = "Appointment",
+            summary = "Atualizar consulta",
+            description = "Recebe o ID da consulta e os novos dados via body, atualiza no banco e retorna a entidade atualizada."
+    )
+    public ResponseEntity<AppointmentResponse> updateAppointment(@PathVariable Long id, @Valid @RequestBody AppointmentRequest appointmentRequest) {
         Appointment appointment = appointmentService.updateAppointment(id, appointmentRequest.toEntity());
         return ResponseEntity.ok(AppointmentResponse.fromEntity(appointment));
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAppointment(@PathVariable Long id){
+    @Operation(
+            tags = "Appointment",
+            summary = "Deletar consulta",
+            description = "Remove a consulta com o ID informado do banco de dados. Retorna 204 sem conteúdo."
+    )
+    public ResponseEntity<Void> deleteAppointment(@PathVariable Long id) {
         appointmentService.deleteAppointment(id);
         return ResponseEntity.noContent().build();
     }
-
 }

@@ -4,6 +4,9 @@ import br.com.project.prontpet.enums.Sex;
 import br.com.project.prontpet.models.Owner;
 import br.com.project.prontpet.models.Pet;
 import jakarta.validation.constraints.*;
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDate;
 
 public record PetRequest(
 
@@ -16,9 +19,8 @@ public record PetRequest(
         @NotBlank(message = "race is required")
         String breed,
 
-        @NotNull
-        @Min(value = 0, message = "the age must be greater or equals 0")
-        Integer age,
+        @PastOrPresent(message = "the birth date might not be in the future")
+        LocalDate birthDate,
 
         @NotNull
         @DecimalMin(value = "0.5", message = "the weight must be at least '0.5g'")
@@ -35,7 +37,7 @@ public record PetRequest(
                         .name(name)
                         .species(species)
                         .breed(breed)
-                        .age(age)
+                        .birthDate(birthDate)
                         .weight(weight)
                         .sex(sex)
                         .owner(owner)

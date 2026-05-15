@@ -5,6 +5,8 @@ import br.com.project.prontpet.enums.Sex;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Builder
 @Data
 @Entity
@@ -17,10 +19,11 @@ public class Pet {
     private String name;
     private String species;
     private String breed;
-    private Integer age;
+    private LocalDate birthDate;
     private Double weight;
     private Sex sex;
 
     @ManyToOne
     private Owner owner;
+
 }

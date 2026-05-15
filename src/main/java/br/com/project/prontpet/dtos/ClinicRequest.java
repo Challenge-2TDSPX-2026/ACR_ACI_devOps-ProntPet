@@ -3,6 +3,7 @@ package br.com.project.prontpet.dtos;
 import br.com.project.prontpet.models.Clinic;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -21,13 +22,14 @@ public record ClinicRequest(
         @NotBlank(message = "address is required")
         String address,
 
+        @NotBlank(message = "phone is required")
         @Size(min = 11, max = 14, message = "the value must have between 11 and 14 characters")
         String phone,
 
-        @NotBlank(message = "openingHousrs is required")
+        @NotNull(message = "openingHousrs is required")
         LocalTime openingHours,
 
-        @NotBlank(message = "closingHours is required")
+        @NotNull(message = "closingHours is required")
         LocalTime closingHours
 ) {
         public Clinic toEntity(){

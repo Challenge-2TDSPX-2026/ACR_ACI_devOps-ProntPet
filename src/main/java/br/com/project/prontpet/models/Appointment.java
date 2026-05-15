@@ -24,10 +24,13 @@ public class Appointment {
     private String symptoms;
     private String dignosis;
     private String observations;
+    private LocalDateTime appointmentDate;
+    private Double updatedWeight;
 
     @ManyToOne
     private Clinic clinic;
 
     @ManyToOne
     private Pet pet;
+
 }
