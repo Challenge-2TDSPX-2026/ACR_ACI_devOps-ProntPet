@@ -17,7 +17,7 @@ public record ClinicRequest(
         String name,
 
         @CNPJ(message = "the CNPJ must be valid")
-        String CNPJ,
+        String cnpj,
 
         @NotBlank(message = "address is required")
         String address,
@@ -35,7 +35,7 @@ public record ClinicRequest(
         public Clinic toEntity(){
                 return Clinic.builder()
                         .name(name)
-                        .CNPJ(CNPJ)
+                        .cnpj(cnpj)
                         .address(address)
                         .phone(phone)
                         .openingHours(openingHours)

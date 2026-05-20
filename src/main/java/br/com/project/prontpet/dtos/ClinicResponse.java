@@ -19,7 +19,7 @@ public record ClinicResponse(
         return new ClinicResponse(
                 c.getId(),
                 c.getName(),
-                c.getCNPJ(),
+                c.getCnpj(),
                 c.getAddress(),
                 c.getPhone(),
                 c.getOpeningHours(),
