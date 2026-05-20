@@ -25,10 +25,8 @@ public record AppointmentRequest (
         @NotBlank(message = "observations is required")
         String observations,
 
-        @NotBlank(message = "clinic is required")
         Clinic clinic,
 
-        @NotBlank(message = "pet is required")
         Pet pet,
 
         @NotNull(message = "appointmentDate is required")
