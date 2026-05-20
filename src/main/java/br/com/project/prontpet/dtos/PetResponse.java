@@ -15,7 +15,7 @@ public record PetResponse(
         LocalDate birthDate,
         Double weight,
         Sex sex,
-        Owner owner
+        Long ownerId
 ) {
     public static PetResponse fromEntity(Pet p){
         return new PetResponse(
@@ -26,7 +26,7 @@ public record PetResponse(
                 p.getBirthDate(),
                 p.getWeight(),
                 p.getSex(),
-                p.getOwner()
+                p.getOwner() != null ? p.getOwner().getId() : null
         );
     }
 }
