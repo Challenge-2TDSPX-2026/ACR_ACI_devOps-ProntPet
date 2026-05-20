@@ -1,0 +1,482 @@
+{
+  "info": {
+    "_postman_id": "8594fbdd-f15f-40c7-b412-0b884a90d2ae",
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49875173",
+    "_collection_link": "https://go.postman.co/collection/49875173-8594fbdd-f15f-40c7-b412-0b884a90d2ae?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "localhost:8080/clinics",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Clínica Vet ProntPet\",\r\n  \"cnpj\": \"11.222.333/0001-81\",\r\n  \"address\": \"Rua das Flores, 123 - São Paulo/SP\",\r\n  \"phone\": \"11987654321\",\r\n  \"openingHours\": \"08:00:00\",\r\n  \"closingHours\": \"18:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/clinics",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clinics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/owners/login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joao.silva@email.com\",\r\n  \"password\": \"senha123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/owners/login",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "owners",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/owners/login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joao.silva@email.com\",\r\n  \"password\": \"senhaErrada\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/owners/login",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "owners",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/pets",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Rex\",\r\n  \"species\": \"Gato\",\r\n  \"breed\": \"Labrador\",\r\n  \"birthDate\": \"2021-03-15\",\r\n  \"weight\": 12.5,\r\n  \"sex\": \"Male\",\r\n  \"owner\": { \"id\": 1 }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/pets",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/appointment",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"speciality\": \"Clínica Geral\",\r\n  \"symptoms\": \"Tosse frequente e inapetência\",\r\n  \"dignosis\": \"Traqueobronquite infecciosa\",\r\n  \"observations\": \"Prescrever antibiótico e repouso\",\r\n  \"clinic\": { \"id\": 1 },\r\n  \"pet\": { \"id\": 1 },\r\n  \"appointmentDate\": \"2026-06-15T10:00:00\",\r\n  \"updatedWeight\": 13.2\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/appointment",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "appointment"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/appointment",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"speciality\": \"Dermatologia\",\r\n  \"symptoms\": \"Coceira\",\r\n  \"dignosis\": \"Dermatite\",\r\n  \"observations\": \"Pomada\",\r\n  \"clinic\": { \"id\": 1 },\r\n  \"pet\": { \"id\": 1 },\r\n  \"appointmentDate\": \"2026-06-16T23:00:00\",\r\n  \"updatedWeight\": 13.0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/appointment",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "appointment"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/clinics",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"speciality\": \"Dermatologia\",\r\n  \"symptoms\": \"Coceira\",\r\n  \"dignosis\": \"Dermatite\",\r\n  \"observations\": \"Pomada\",\r\n  \"clinic\": { \"id\": 1 },\r\n  \"pet\": { \"id\": 1 },\r\n  \"appointmentDate\": \"2026-06-16T23:00:00\",\r\n  \"updatedWeight\": 13.0\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/clinics",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clinics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/owners",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/owners",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "owners"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/owners/1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/owners/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "owners",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/pets",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pets",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/pets/1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pets/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/pets",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pets?species=Cachorro",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets"
+          ],
+          "query": [
+            {
+              "key": "species",
+              "value": "Cachorro"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/pets",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pets?breed=Labrador",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets"
+          ],
+          "query": [
+            {
+              "key": "breed",
+              "value": "Labrador"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/pets",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pets?name=Rex",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Rex"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/appointment",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/appointment",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "appointment"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/pets/1",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Rex\",\r\n  \"species\": \"Cachorro\",\r\n  \"breed\": \"Labrador\",\r\n  \"birthDate\": \"2021-03-15\",\r\n  \"weight\": 15.0,\r\n  \"sex\": \"Male\",\r\n  \"owner\": { \"id\": 1 }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/pets/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/appointment/1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/appointment/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "appointment",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/pets/1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pets/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pets",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/owners/1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/owners/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "owners",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/clinics/1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/clinics/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clinics",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
