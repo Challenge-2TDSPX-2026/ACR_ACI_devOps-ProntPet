@@ -22,11 +22,9 @@ public record OwnerRequest (
 
         @NotBlank(message = "phone is required")
         @Size(min = 11)
-        String phone,
+        String phone
 
-        @NotBlank(message = "password is required")
-        @Size(min = 8, max = 20, message = "the password must be at least 8 characters long and no more than 20.")
-        String password
+
 ){
     public Owner toEntity(){
         return Owner.builder()
@@ -34,7 +32,6 @@ public record OwnerRequest (
                 .cpf(cpf)
                 .email(email)
                 .phone(phone)
-                .password(password)
                 .build();
     }
 }

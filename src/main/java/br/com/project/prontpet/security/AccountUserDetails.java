@@ -1,0 +1,38 @@
+package br.com.project.prontpet.security;
+
+import br.com.project.prontpet.models.Account;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
+
+public class AccountUserDetails implements UserDetails {
+
+    private final Account account;
+
+    public AccountUserDetails(Account account) {
+        this.account = account;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(account.getRole().name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return account.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return account.getEmail();
+    }
+
+}

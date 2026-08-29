@@ -23,7 +23,6 @@ public class Owner {
     private String cpf;
     private String email;
     private String phone;
-    private String password;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     @JsonIgnore
