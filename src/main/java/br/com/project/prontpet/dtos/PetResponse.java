@@ -3,7 +3,7 @@ package br.com.project.prontpet.dtos;
 import br.com.project.prontpet.enums.Sex;
 import br.com.project.prontpet.models.Owner;
 import br.com.project.prontpet.models.Pet;
-
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record PetResponse(
@@ -13,7 +13,7 @@ public record PetResponse(
         String species,
         String race,
         LocalDate birthDate,
-        Double weight,
+        BigDecimal weight,
         Sex sex,
         Long ownerId
 ) {

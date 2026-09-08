@@ -5,7 +5,7 @@ import br.com.project.prontpet.models.Owner;
 import br.com.project.prontpet.models.Pet;
 import jakarta.validation.constraints.*;
 import org.springframework.cglib.core.Local;
-
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record PetRequest(
@@ -24,7 +24,7 @@ public record PetRequest(
 
         @NotNull
         @DecimalMin(value = "0.5", message = "the weight must be at least '0.5g'")
-        Double weight,
+        BigDecimal weight,
 
         @NotNull(message = "sex is required")
         Sex sex,

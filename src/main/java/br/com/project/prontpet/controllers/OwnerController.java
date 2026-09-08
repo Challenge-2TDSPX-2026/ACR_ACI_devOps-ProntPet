@@ -1,7 +1,6 @@
 package br.com.project.prontpet.controllers;
 
-import br.com.project.prontpet.dtos.LoginRequest;
-import br.com.project.prontpet.dtos.LoginResponse;
+
 import br.com.project.prontpet.dtos.OwnerRequest;
 import br.com.project.prontpet.dtos.OwnerResponse;
 import br.com.project.prontpet.models.Owner;
@@ -43,18 +42,6 @@ public class OwnerController {
                 .map((o) -> ResponseEntity.ok(OwnerResponse.fromEntity(o)))
                 .orElse(ResponseEntity.notFound().build());
     }
-
-    @PostMapping("/login")
-    @Operation(
-            tags = "Owner",
-            summary = "Login do dono",
-            description = "Recebe as credenciais do dono via body e retorna o token de autenticação em caso de sucesso."
-    )
-    public ResponseEntity<LoginResponse> loginOwner(@Valid @RequestBody LoginRequest loginRequest) {
-        LoginResponse logined = ownerService.login(loginRequest);
-        return ResponseEntity.ok(logined);
-    }
-
     @PostMapping
     @Operation(
             tags = "Owner",

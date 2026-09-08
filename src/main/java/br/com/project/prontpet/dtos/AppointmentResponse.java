@@ -4,7 +4,7 @@ import br.com.project.prontpet.models.Appointment;
 import br.com.project.prontpet.models.Clinic;
 import br.com.project.prontpet.models.Pet;
 import jakarta.persistence.ManyToOne;
-
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public record AppointmentResponse(
@@ -18,7 +18,7 @@ public record AppointmentResponse(
         Clinic clinic,
         Pet pet,
         LocalDateTime appointmentDate,
-        Double updatedWeight
+        BigDecimal updatedWeight
 ) {
     public static AppointmentResponse fromEntity(Appointment a) {
         return new AppointmentResponse(

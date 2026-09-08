@@ -17,15 +17,22 @@ import java.util.List;
 @NoArgsConstructor
 public class Owner {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String cpf;
+
     private String email;
+
     private String phone;
+
+    @JsonIgnore
+    private String password;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Pet> pets;
-
 }
