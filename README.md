@@ -261,4 +261,3 @@ Os seguintes arquivos fazem parte da solução:
 * `README.md` — documentação dos comandos e procedimentos utilizados.
 
 ```
-
