@@ -79,13 +79,13 @@ A aplicação foi configurada para não executar o container da API com privilé
 
 O objetivo do ProntPet é fornecer uma solução centralizada para o gerenciamento de informações veterinárias, utilizando uma arquitetura baseada em API REST e containers, permitindo maior organização dos dados, facilidade de implantação e utilização de recursos de computação em nuvem.
 
-````markdown
+---
+
+### Estrutura dos arquivos
 
 A solução foi containerizada utilizando Docker, com imagens independentes para a API Java e para o banco de dados MySQL.
 
 As imagens são armazenadas no Azure Container Registry (ACR) e posteriormente utilizadas no Azure Container Instances (ACI).
-
-### Estrutura dos arquivos
 
 ```text
 ProntPet/
