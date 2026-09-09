@@ -263,4 +263,4 @@ Os seguintes arquivos fazem parte da solução:
 
 ## Arquitetura do ProntPet
 
-![Arquitetura](./imagens/Arquitetura DevOps do ProntPet.png)
+![Arquitetura](./imagens/Arquitetura_ProntPet.png)
