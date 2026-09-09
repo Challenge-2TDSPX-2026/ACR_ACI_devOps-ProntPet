@@ -260,4 +260,7 @@ Os seguintes arquivos fazem parte da solução:
 * `scripts/mysql.sh` — deploy do MySQL no ACI;
 * `README.md` — documentação dos comandos e procedimentos utilizados.
 
-```
+
+## Arquitetura do ProntPet
+
+![Arquitetura](./imagens/Arquitetura DevOps do ProntPet.png)
