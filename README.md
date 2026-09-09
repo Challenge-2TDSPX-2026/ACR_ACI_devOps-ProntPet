@@ -94,9 +94,9 @@ ProntPet/
 ├── src/
 │   └── ...
 │
-└── database/
+└── prontpet-db/
     ├── Dockerfile
-    └── init.sql
+    └── script_bd.sql
 ````
 
 ### 1. Build da imagem da API Java
